@@ -1,0 +1,339 @@
+/*
+Developer: Emian Amanullah.
+Distributed under GNU GPL 2.
+*/
+
+/*Base elements*/
+
+a {
+	color:darkblue;
+	text-decoration:none;
+}
+
+a:hover {
+	color:darkblue;
+	font-weight:bold;
+	text-decoration:none
+}
+
+body {
+	font-size: 100%;
+}
+
+p {
+	text-indent: 25px;
+}
+
+button {
+	height: 20px;
+	padding: 0px;
+	margin: 0px;
+}
+
+/* Main DIVs */
+
+#table {
+	width: 780px; 
+	height: 580px;
+	background-image: url(images/bg.gif);
+	margin: 0px;
+	padding: 10px;
+	display: block;
+}
+
+#top {
+	width: 780px; 
+	height: 50px;
+	margin: 0px;
+	padding: 0px;
+	border: solid 0px black; 
+	text-align: center;
+	display: block;
+}
+#bottom {
+	width: 780px; 
+	height: 50px;
+	margin: 0px;
+	padding: 0px;
+	border: solid 0px black;
+	text-align: center;
+	display: block;
+}
+#main {
+	width: 760px; 
+	height: 460px;
+	margin: 0px;
+	padding: 10px;
+	display: block;
+}
+
+/* DIV for new game */
+
+#toptit:hover {cursor: pointer;}
+#new {
+	width: 760px; 
+	height: 460px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	text-align: center;
+}
+#gametype {
+	width: 250px;
+	height: 210px;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	display: block;
+	float: left;
+}
+#players {
+	width: 250px;
+	height: 190px;
+	margin: 10px 0px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: middle;
+	display: block;
+	float: left;
+}
+#buttons {
+	width: 250px;
+	height: 210px;
+	margin: 0px 0px;
+	padding: 0px;
+	text-align: center;
+	line-height: 0px;
+	display: block;
+	float: left;
+}
+.button {
+	width: 70px;
+	height: 70px;
+	border: none;
+}
+.button:hover {cursor: pointer;}
+.long_button {
+	width: 140px;
+	height: 70px;
+	border: none;
+}
+.long_button:hover {cursor: pointer;}
+#gtype {
+	width: 200px;
+	height: 125px;
+	border: none;
+}
+
+.button_short, .button_medium, .button_long {
+	border: none;
+	padding: 0;
+	text-align: center;
+	vertical-align: top;
+	line-height: 70px;
+	overflow: hidden;
+	font-size: 30px;
+	font-weight: bold;
+	text-shadow: 1px 1px 10px black;
+	background: url('images/button.png');
+	display: inline-block;
+}
+.button_short img, .button_medium img, .button_long img {
+	max-height: 54px;
+	vertical-align: middle;
+}
+.button_medium {
+	width: 140px;
+	background: url('images/button_medium.gif');
+}
+.button_long {
+	width: 210px;
+	background: url('images/button_long.gif');
+}
+
+/* DIVs for game */
+
+#game {
+	width: 760px; 
+	height: 460px;
+	margin: 0px;
+	padding: 0px;
+	display: none;
+	text-align: center;
+}
+#board {
+	position: relative;
+	left: 20px;
+	width: 700px;
+	height: 250px;
+	margin: 0px;
+	padding: 10px;
+	display: block;
+	background-image: url(images/map_border.gif);
+}
+#map {
+	width: 700px;
+	height: 250px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	background-image: url(images/map.gif);
+}
+.player {
+	width: 155px;
+	height: 170px;
+	margin: 0px;
+	padding: 10px;
+	display: block;
+	background-image: url(images/player_border.gif);
+	float: left;
+	text-align: center;
+	line-height: 30px;
+	font-size: 100%;
+}
+#dices {
+	width: 250px;
+	height: 50px;
+	margin: 0px;
+	padding: 10px;
+	display: block;
+	background-image: url(images/dice_border.gif);
+	float: left;
+	text-align: center;
+}
+.dice {
+	width: 50px;
+	height: 50px;
+	border: 0px;
+}
+#current {
+	width: 130px;
+	height: 70px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	background-image: url(images/crusarders_flag_mini.gif);
+	float: left;
+	text-align: center;
+	line-height: 35px;
+	font-size: 100%;
+}
+#roll, #switch, #ok, #cancel {
+	float: left;
+	width: 70px;
+	height: 70px;
+	border: none;
+}
+#retreat, #help {
+	float: right;
+	width: 70px;
+	height: 70px;
+	border: none;
+}
+#roll:hover {cursor: pointer;}
+#switch:hover {cursor: pointer;}
+#ok:hover {cursor: pointer;}
+#cancel:hover {cursor: pointer;}
+#retreat:hover {cursor: pointer;}
+#help:hover {cursor: pointer;}
+#canvas:hover {cursor: pointer;}
+#menu {
+	width: 410px;
+	height: 190px;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	float: left;
+	text-align: center;
+}
+#msg {
+	width: 390px;
+	height: 20px;
+	margin: 0px;
+	padding: 15px;
+	display: block;
+	line-height: 20px;
+	background-image: url(images/text_border.gif);
+	font-size: 80%;
+	vertical-align: middle;
+}
+
+/* Other DIVs */
+
+#result {
+	width: 760px; 
+	height: 460px;
+	margin: 0px;
+	padding: 0px;
+	display: none;
+}
+.spacer {
+	 height: 0px;
+	 clear: left;
+}
+#progress {
+	width: 170px; 
+	height: 20px
+	margin: 0px;
+	padding: 15px;
+	background-image: url(images/progress.gif);
+	position: absolute;
+	top: 275px;
+	left: 300px;
+	display: block;
+	border: none; 
+	line-height: 20px;
+	font-size: 80%;
+	vertical-align: middle;
+}
+#tutorial, #briefing, #scores {
+	width: 580px; 
+	height: 380px;
+	margin: 0px;
+	padding: 10px;
+	background-image: url(images/tutorial_border.gif);
+	position: absolute;
+	text-align: center;
+	top: 100px;
+	left: 100px;
+	display: none;
+	border: none; 
+	line-height: 20px;
+}
+#illustration {
+	width: 580px;
+	height: 200px;
+	border: none;
+}
+#text, #brief, #score {
+	width: 580px;
+	text-indent: 25px;
+	text-align: left;
+	height: 100px;
+	line-height: 25px;
+	font-size: 100%;
+}
+#brief_buttons, #score_buttons {
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 20px;
+	line-height: 70px;
+}
+.brief_img {float:left; padding:5px;}
+#score {
+	font-size: 20px;
+}
+
+/* Other elements */
+	
+#campaign {
+	float: left;
+	text-align: center;
+	width: 250px;
+}
+#campaign_menu {
+	float: left;
+	text-align: center;
+	width: 250px;
+}
