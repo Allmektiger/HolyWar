@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<!--
+Developer: Emian (allmektiger@gmail.com)
+Distributed under GNU GPL 2.
+Game graphic: Seven Kingdoms: Ancient Adversaries by Enlight Software (GPL).
+-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Holy War - The Battle for Faith</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+	<div id="table">
+		<div id="top">
+			<img border=0 src="images/title.png" width=650 height=50>
+		</div>
+		<div id="main">
+			<div id="new">
+				<img border=0 width=750 height=250 src="images/title.gif">
+				<div class="spacer"></div>
+				<div id="buttons">
+					<button onclick="SwitchMenu('campaign'); return false" class="button button_medium" id="select_menu">Quests</button>
+					<br><button onclick="SwitchMenu('skirmish'); return false" class="button button_medium" id="select_menu">Skirmish</button>
+					<br><img onclick="playOn(3); return false" class="button" src="images/sound_on.gif"><img onclick="playOff(3); return false" class="button" src="images/sound_off.gif">
+				</div>
+				<div id="campaign">
+					<button onclick="NewCampaign(1); return false" class="button button_long">Crusade</button>
+					<button onclick="/*NewCampaign(2);*/ alert('Кампания не закончена.'); return false" class="button button_long">War for Faith</button>
+					<button onclick="/*NewCampaign(3);*/ alert('Кампания не закончена.'); return false" class="button button_long">Birthright</button>						
+				</div>
+				<div id="campaign_menu">
+					<button onclick="Continue(); return false" class="button button_long">Continue</button>
+					<button onclick="TopScores(); return false" class="button button_long">Top scores</button>
+				</div>
+				<div id="gametype" style="display: none;">
+					<img id="gtype" src="images/classic.gif">
+					<br><button onclick="ChangeGType(); return false" class="button button_medium">Change</button>
+				</div>
+				<div id="players" style="display: none;">
+					<button  onclick="SwitchFraction(1); return false" class="button button_medium"><img border=0 id="Fraction1" src="images/saracens_flag_mini.gif"></button> <img onclick="SwitchAI(1); return false" id="AI1" class="button" src="images/human.gif">
+					<br><button onclick="SwitchFraction(2); return false" class="button button_medium"><img border=0 id="Fraction2" src="images/crusarders_flag_mini.gif"></button> <img onclick="SwitchAI(2); return false" id="AI2" class="button" src="images/ai.gif">
+					<br><button onclick="camp=-1; camp_mission=-1; Start(); return false" class="button button_medium">START</button>
+				</div>
+			</div>
+			<div id="game">
+				<div id="board">
+					<div id="map">
+						<canvas id="canvas" width="700" height="250">Canvas is not supported by your browser.</canvas> 
+					</div>
+				</div>
+				<div class="spacer"></div>
+				<div id="pl2" class="player">
+					<b id="pl2_name">Crusarders</b>
+					<br><img id="pl2Flag" height=100 width=150 border=0 src="images/crusarders_flag.gif">
+					<br><b><span id="pl2Power">360</span></b>
+				</div>
+				<div id="menu">
+					<img onclick="RollClick(); return false" src="images/roll_active.gif" id="roll">
+					<div id="dices">
+						<img id="dice0" class="dice" src="images/d00.gif"><img id="dice1" class="dice" src="images/d00.gif"><img id="dice2" class="dice" src="images/d00.gif"><img id="dice3" class="dice" src="images/d00.gif"><img id="dice4" class="dice" src="images/d00.gif">
+					</div>
+					<img onclick="SwitchDice(currentPlayer,1); return false" src="images/change_active.gif" id="switch">
+					<div class="spacer"></div>
+					<img onclick="OKClick(false); return false" src="images/ok_active.gif" class="button" id="ok">
+					<img onclick="CancelClick(true); return false" src="images/cancel_active.gif" class="button" id="cancel">
+					<div id="current"></div>
+					<img onclick="SurrenderClick(); return false" src="images/retreat_active.gif" class="button" id="retreat">
+					<img onclick="Tutorial(); return false" src="images/help_active.gif" class="button" id="help">
+					<div class="spacer"></div>
+					<div id="msg"></div>
+				</div>
+				<div id="pl1" class="player">
+					<b id="pl1_name">Saracens</b>
+					<br><img id="pl1Flag" height=100 width=150 border=0 src="images/saracens_flag.gif">
+					<br><b><span id="pl1Power">360</span></b>
+				</div>
+			</div>
+			<div id="result">
+			</div>
+		</div>
+		<div class="spacer"></div>
+		<div id="bottom">
+			<font size=-1><i>&copy; 2013-2014 <b>Emian</b></i><br><a href="http://holywar.ucoz.net" target="_blank">holywar.ucoz.net</a></font>
+		</div>
+		<div id="tutorial">
+			<img id="illustration" src="images/tutorial1.gif">
+			<div id="text">Click on the <b>Roll</b> (1) button to start the game. Then click <b>Turn</b> (2) button.</div>
+			<img onclick="Tutorial_prev(); return false" src="images/tutorial_prev.gif" class="button"><button onclick="Tutorial_close(); return false" class="button button_medium">Close</button><img onclick="Tutorial_next(); return false" src="images/tutorial_next.gif" class="button">
+		</div>
+		<div id="briefing">
+			<div id="brief"></div>
+			<div id="brief_buttons">
+				<button onclick="Next(); return false" class="button button_medium">Continue</button>
+				<button onclick="Return(); return false" class="button button_medium">Return</button>
+			</div>		
+		</div>
+		<div id="scores">
+			<div id="score"></div>
+			<div id="score_buttons">
+				<button onclick="CloseScores(); return false" class="button button_medium">close</button>
+			</div>		
+		</div>
+		<div id="progress">Loading...</div>
+	</div>
+	<audio id="track1" autoplay onended="playTrack(2)">
+		<source src="music/1.mp3" type="audio/mpeg">
+		<source src="music/1.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="track2" onended="playTrack(3)">
+		<source src="music/2.mp3" type="audio/mpeg">
+		<source src="music/2.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="track3" onended="playTrack(1)">
+		<source src="music/3.mp3" type="audio/mpeg">
+		<source src="music/3.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="captureSnd">
+		<source src="sound/capture.mp3" type="audio/mpeg">
+		<source src="sound/capture.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="clickSnd">
+		<source src="sound/click.mp3" type="audio/mpeg">
+		<source src="sound/click.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="diceSnd">
+		<source src="sound/dice.mp3" type="audio/mpeg">
+		<source src="sound/dice.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="endSnd">
+		<source src="sound/end.mp3" type="audio/mpeg">
+		<source src="sound/end.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="explosionSnd">
+		<source src="sound/explosion.mp3" type="audio/mpeg">
+		<source src="sound/explosion.ogg" type='audio/ogg'>
+	</audio>
+	<audio id="stepSnd">
+		<source src="sound/step.mp3" type="audio/mpeg">
+		<source src="sound/step.ogg" type='audio/ogg'>
+	</audio>
+	<script type="text/javascript" src="utilites.js"></script>
+	<script type="text/javascript" src="objects.js"></script>
+	<script type="text/javascript" src="core.js"></script>
+</body>
+</html>
